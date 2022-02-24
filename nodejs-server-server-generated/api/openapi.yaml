@@ -1,0 +1,341 @@
+openapi: 3.0.1
+info:
+  title: E-Commerce APP (REST API)
+  description: A basic API for working with the Swagger Tools.
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /orders:
+    summary: All orders
+    description: End Point to all orders data.
+    get:
+      tags:
+      - Orders
+      summary: Get all orders
+      description: Get all orders data from DB
+      operationId: orders_get_all
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              examples:
+                orders:
+                  value: "{\"orders\":[{\"name\":\"Carey Maynard\",\"id\":\"001\"\
+                    ,\"state\":\"pending\"},{\"name\":\"Angelo Ayala\",\"id\":\"002\"\
+                    ,\"state\":\"canceled\"},{\"name\":\"Regina Yates\",\"id\":\"\
+                    003\",\"state\":\"pending\"},{\"name\":\"Elliott Mcclure\",\"\
+                    id\":\"004\",\"state\":\"pending\"}]}"
+      x-swagger-router-controller: Orders
+  /orders/new:
+    summary: New order
+    description: Insert new order data into DB
+    post:
+      tags:
+      - Orders
+      summary: Create new order
+      description: Create new order and upload data to DB
+      operationId: orders_new
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Orders
+  /order/{id}:
+    summary: Individual order
+    description: Access one order data from DB
+    get:
+      tags:
+      - Orders
+      summary: Get one order
+      description: Access one order data from DB
+      operationId: orders_get_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Orders
+    put:
+      tags:
+      - Orders
+      summary: Update one order
+      description: Update order data that matches ID parameter
+      operationId: orders_update_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Orders
+    delete:
+      tags:
+      - Orders
+      summary: Delete one order
+      description: Delete one order data from DB that matches ID parameter
+      operationId: orders_delete_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Orders
+  /products:
+    summary: All Products data
+    description: End Point to all products data.
+    get:
+      tags:
+      - Products
+      summary: Get all products
+      description: Get all products data from DB.
+      operationId: products_get_all
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              examples:
+                products:
+                  value: "{\"products\":[{\"name\":\"S10+\",\"id\":\"001\",\"state\"\
+                    :\"complete\"},{\"name\":\"SkyMaster25x70\",\"id\":\"002\",\"\
+                    state\":\"complete\"}]}"
+      x-swagger-router-controller: Products
+  /products/new:
+    summary: New product
+    description: Insert new product data into DB
+    post:
+      tags:
+      - Products
+      summary: Create new product
+      description: Create new product and upload data to DB.
+      operationId: products_new
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Products
+  /products/{id}:
+    summary: Individual product
+    description: Access data about individual product.
+    get:
+      tags:
+      - Products
+      summary: Get one product
+      description: Access one product data from DB
+      operationId: products_get_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Products
+    put:
+      tags:
+      - Products
+      summary: Update one product
+      description: Update product data that matches ID parameter
+      operationId: products_update_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Products
+    delete:
+      tags:
+      - Products
+      summary: Delete one product
+      description: Delete one product from DB that matches ID parameter
+      operationId: products_delete_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Products
+  /accounts:
+    summary: All accounts
+    description: End point to all accounts data
+    get:
+      tags:
+      - Accounts
+      summary: Get all accounts
+      description: Get all accounts data from DB
+      operationId: accounts_get_all
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              examples:
+                accounts:
+                  value: "{\"accounts\":[{\"name\":\"example@01.db\",\"id\":\"001\"\
+                    ,\"state\":\"active\"},{\"name\":\"example@02.db\",\"id\":\"002\"\
+                    ,\"state\":\"active\"}]}"
+      x-swagger-router-controller: Accounts
+  /accounts/new:
+    summary: New Account
+    description: Insert new accounts data into DB
+    post:
+      tags:
+      - Accounts
+      summary: Create new account
+      description: Create new account and upload data to DB
+      operationId: accounts_new
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Accounts
+  /accounts/{id}:
+    summary: Individual account
+    description: Access one account data from DB
+    get:
+      tags:
+      - Accounts
+      summary: Get one account
+      description: Access one account data from DB
+      operationId: accounts_get_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Accounts
+    put:
+      tags:
+      - Accounts
+      summary: Update one account
+      description: Update account data that matches ID parameter
+      operationId: accounts_update_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Accounts
+    delete:
+      tags:
+      - Accounts
+      summary: Delete one account
+      description: Delete one account data from DB that matches ID parameter
+      operationId: accounts_delete_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Accounts
+  /my-account:
+    summary: User account
+    description: Access data to personal account
+    get:
+      tags:
+      - My-Account
+      summary: Get personal account
+      description: Access personal account data from DB
+      operationId: my-account_get
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              examples:
+                my-account:
+                  value: "{\"name\": \"John Smith\",\n\"email\": \"example@01.db\"\
+                    }"
+      x-swagger-router-controller: MyAccount
+    put:
+      tags:
+      - My-Account
+      summary: Update personal account
+      description: Update personal account data in DB
+      operationId: my-account_update
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: MyAccount
+    delete:
+      tags:
+      - My-Account
+      summary: Delete personal account
+      description: Delete personal account from DB
+      operationId: my-account_delete
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: MyAccount
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+        state:
+          type: string
+      xml:
+        name: Order
