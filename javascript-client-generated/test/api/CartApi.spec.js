@@ -29,11 +29,11 @@
   var instance;
 
   beforeEach(function() {
-    instance = new ECommerceAppRestApi.MyAccountApi();
+    instance = new ECommerceAppRestApi.CartApi();
   });
 
   describe('(package)', function() {
-    describe('MyAccountApi', function() {
+    describe('CartApi', function() {
       describe('cartCheckout', function() {
         it('should call cartCheckout successfully', function(done) {
           // TODO: uncomment cartCheckout call
@@ -130,60 +130,6 @@
           /*
 
           instance.cartUpdateOne(id, function(error, data, response) {
-            if (error) {
-              done(error);
-              return;
-            }
-
-            done();
-          });
-          */
-          // TODO: uncomment and complete method invocation above, then delete this line and the next:
-          done();
-        });
-      });
-      describe('myAccountDelete', function() {
-        it('should call myAccountDelete successfully', function(done) {
-          // TODO: uncomment myAccountDelete call
-          /*
-
-          instance.myAccountDelete(function(error, data, response) {
-            if (error) {
-              done(error);
-              return;
-            }
-
-            done();
-          });
-          */
-          // TODO: uncomment and complete method invocation above, then delete this line and the next:
-          done();
-        });
-      });
-      describe('myAccountGet', function() {
-        it('should call myAccountGet successfully', function(done) {
-          // TODO: uncomment myAccountGet call
-          /*
-
-          instance.myAccountGet(function(error, data, response) {
-            if (error) {
-              done(error);
-              return;
-            }
-
-            done();
-          });
-          */
-          // TODO: uncomment and complete method invocation above, then delete this line and the next:
-          done();
-        });
-      });
-      describe('myAccountUpdate', function() {
-        it('should call myAccountUpdate successfully', function(done) {
-          // TODO: uncomment myAccountUpdate call
-          /*
-
-          instance.myAccountUpdate(function(error, data, response) {
             if (error) {
               done(error);
               return;

@@ -326,6 +326,109 @@ paths:
         default:
           description: Default error sample response
       x-swagger-router-controller: MyAccount
+  /my-account/cart:
+    summary: User cart
+    description: Access user cart
+    get:
+      tags:
+      - Cart
+      - My-Account
+      summary: Get cart
+      description: Access all items inside users cart
+      operationId: cart_get_all
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Cart
+    delete:
+      tags:
+      - Cart
+      - My-Account
+      summary: Delete all
+      description: Delete all products from personal cart
+      operationId: cart_delete_all
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Cart
+  /my-account/cart/{id}:
+    summary: Individual product in cart
+    description: Access individual product inside personal cart
+    get:
+      tags:
+      - Cart
+      - My-Account
+      summary: Get one product from cart
+      description: Access one product inside personal cart
+      operationId: cart_get_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Cart
+    put:
+      tags:
+      - Cart
+      - My-Account
+      summary: Update product in cart
+      description: Update product quantity inside personal cart
+      operationId: cart_update_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Cart
+    delete:
+      tags:
+      - Cart
+      - My-Account
+      summary: Delete product from cart
+      description: Delete one product form personal cart
+      operationId: cart_delete_one
+      parameters:
+      - name: id
+        in: path
+        description: The id of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Cart
+  /my-account/cart/checkout:
+    summary: Checkout order
+    description: End point to checkout orders
+    post:
+      tags:
+      - Cart
+      - My-Account
+      summary: Process checkout
+      description: Process cart products and payment and then create new order and
+        save data to DB
+      operationId: cart_checkout
+      responses:
+        default:
+          description: Default error sample response
+      x-swagger-router-controller: Cart
 components:
   schemas:
     Order:

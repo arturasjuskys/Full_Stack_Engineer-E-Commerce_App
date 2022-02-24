@@ -15,15 +15,15 @@
 import {ApiClient} from "../ApiClient";
 
 /**
-* MyAccount service.
-* @module api/MyAccountApi
+* Cart service.
+* @module api/CartApi
 * @version 1.0.0
 */
-export class MyAccountApi {
+export class CartApi {
 
     /**
-    * Constructs a new MyAccountApi. 
-    * @alias module:api/MyAccountApi
+    * Constructs a new CartApi. 
+    * @alias module:api/CartApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instanc
@@ -35,7 +35,7 @@ export class MyAccountApi {
 
     /**
      * Callback function to receive the result of the cartCheckout operation.
-     * @callback moduleapi/MyAccountApi~cartCheckoutCallback
+     * @callback moduleapi/CartApi~cartCheckoutCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -44,7 +44,7 @@ export class MyAccountApi {
     /**
      * Process checkout
      * Process cart products and payment and then create new order and save data to DB
-     * @param {module:api/MyAccountApi~cartCheckoutCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/CartApi~cartCheckoutCallback} callback The callback function, accepting three arguments: error, data, response
      */
     cartCheckout(callback) {
       
@@ -76,7 +76,7 @@ export class MyAccountApi {
     }
     /**
      * Callback function to receive the result of the cartDeleteAll operation.
-     * @callback moduleapi/MyAccountApi~cartDeleteAllCallback
+     * @callback moduleapi/CartApi~cartDeleteAllCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -85,7 +85,7 @@ export class MyAccountApi {
     /**
      * Delete all
      * Delete all products from personal cart
-     * @param {module:api/MyAccountApi~cartDeleteAllCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/CartApi~cartDeleteAllCallback} callback The callback function, accepting three arguments: error, data, response
      */
     cartDeleteAll(callback) {
       
@@ -117,7 +117,7 @@ export class MyAccountApi {
     }
     /**
      * Callback function to receive the result of the cartDeleteOne operation.
-     * @callback moduleapi/MyAccountApi~cartDeleteOneCallback
+     * @callback moduleapi/CartApi~cartDeleteOneCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -127,7 +127,7 @@ export class MyAccountApi {
      * Delete product from cart
      * Delete one product form personal cart
      * @param {String} id The id of the order.
-     * @param {module:api/MyAccountApi~cartDeleteOneCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/CartApi~cartDeleteOneCallback} callback The callback function, accepting three arguments: error, data, response
      */
     cartDeleteOne(id, callback) {
       
@@ -163,7 +163,7 @@ export class MyAccountApi {
     }
     /**
      * Callback function to receive the result of the cartGetAll operation.
-     * @callback moduleapi/MyAccountApi~cartGetAllCallback
+     * @callback moduleapi/CartApi~cartGetAllCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -172,7 +172,7 @@ export class MyAccountApi {
     /**
      * Get cart
      * Access all items inside users cart
-     * @param {module:api/MyAccountApi~cartGetAllCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/CartApi~cartGetAllCallback} callback The callback function, accepting three arguments: error, data, response
      */
     cartGetAll(callback) {
       
@@ -204,7 +204,7 @@ export class MyAccountApi {
     }
     /**
      * Callback function to receive the result of the cartGetOne operation.
-     * @callback moduleapi/MyAccountApi~cartGetOneCallback
+     * @callback moduleapi/CartApi~cartGetOneCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -214,7 +214,7 @@ export class MyAccountApi {
      * Get one product from cart
      * Access one product inside personal cart
      * @param {String} id The id of the order.
-     * @param {module:api/MyAccountApi~cartGetOneCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/CartApi~cartGetOneCallback} callback The callback function, accepting three arguments: error, data, response
      */
     cartGetOne(id, callback) {
       
@@ -250,7 +250,7 @@ export class MyAccountApi {
     }
     /**
      * Callback function to receive the result of the cartUpdateOne operation.
-     * @callback moduleapi/MyAccountApi~cartUpdateOneCallback
+     * @callback moduleapi/CartApi~cartUpdateOneCallback
      * @param {String} error Error message, if any.
      * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
@@ -260,7 +260,7 @@ export class MyAccountApi {
      * Update product in cart
      * Update product quantity inside personal cart
      * @param {String} id The id of the order.
-     * @param {module:api/MyAccountApi~cartUpdateOneCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/CartApi~cartUpdateOneCallback} callback The callback function, accepting three arguments: error, data, response
      */
     cartUpdateOne(id, callback) {
       
@@ -290,129 +290,6 @@ export class MyAccountApi {
 
       return this.apiClient.callApi(
         '/my-account/cart/{id}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
-     * Callback function to receive the result of the myAccountDelete operation.
-     * @callback moduleapi/MyAccountApi~myAccountDeleteCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Delete personal account
-     * Delete personal account from DB
-     * @param {module:api/MyAccountApi~myAccountDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    myAccountDelete(callback) {
-      
-      let postBody = null;
-
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-
-      return this.apiClient.callApi(
-        '/my-account', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
-     * Callback function to receive the result of the myAccountGet operation.
-     * @callback moduleapi/MyAccountApi~myAccountGetCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get personal account
-     * Access personal account data from DB
-     * @param {module:api/MyAccountApi~myAccountGetCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    myAccountGet(callback) {
-      
-      let postBody = null;
-
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = null;
-
-      return this.apiClient.callApi(
-        '/my-account', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
-     * Callback function to receive the result of the myAccountUpdate operation.
-     * @callback moduleapi/MyAccountApi~myAccountUpdateCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Update personal account
-     * Update personal account data in DB
-     * @param {module:api/MyAccountApi~myAccountUpdateCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    myAccountUpdate(callback) {
-      
-      let postBody = null;
-
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
-
-      return this.apiClient.callApi(
-        '/my-account', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

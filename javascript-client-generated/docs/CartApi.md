@@ -1,18 +1,15 @@
-# ECommerceAppRestApi.MyAccountApi
+# ECommerceAppRestApi.CartApi
 
 All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cartCheckout**](MyAccountApi.md#cartCheckout) | **POST** /my-account/cart/checkout | Process checkout
-[**cartDeleteAll**](MyAccountApi.md#cartDeleteAll) | **DELETE** /my-account/cart | Delete all
-[**cartDeleteOne**](MyAccountApi.md#cartDeleteOne) | **DELETE** /my-account/cart/{id} | Delete product from cart
-[**cartGetAll**](MyAccountApi.md#cartGetAll) | **GET** /my-account/cart | Get cart
-[**cartGetOne**](MyAccountApi.md#cartGetOne) | **GET** /my-account/cart/{id} | Get one product from cart
-[**cartUpdateOne**](MyAccountApi.md#cartUpdateOne) | **PUT** /my-account/cart/{id} | Update product in cart
-[**myAccountDelete**](MyAccountApi.md#myAccountDelete) | **DELETE** /my-account | Delete personal account
-[**myAccountGet**](MyAccountApi.md#myAccountGet) | **GET** /my-account | Get personal account
-[**myAccountUpdate**](MyAccountApi.md#myAccountUpdate) | **PUT** /my-account | Update personal account
+[**cartCheckout**](CartApi.md#cartCheckout) | **POST** /my-account/cart/checkout | Process checkout
+[**cartDeleteAll**](CartApi.md#cartDeleteAll) | **DELETE** /my-account/cart | Delete all
+[**cartDeleteOne**](CartApi.md#cartDeleteOne) | **DELETE** /my-account/cart/{id} | Delete product from cart
+[**cartGetAll**](CartApi.md#cartGetAll) | **GET** /my-account/cart | Get cart
+[**cartGetOne**](CartApi.md#cartGetOne) | **GET** /my-account/cart/{id} | Get one product from cart
+[**cartUpdateOne**](CartApi.md#cartUpdateOne) | **PUT** /my-account/cart/{id} | Update product in cart
 
 <a name="cartCheckout"></a>
 # **cartCheckout**
@@ -26,7 +23,7 @@ Process cart products and payment and then create new order and save data to DB
 ```javascript
 import {ECommerceAppRestApi} from 'e_commerce_app__rest_api';
 
-let apiInstance = new ECommerceAppRestApi.MyAccountApi();
+let apiInstance = new ECommerceAppRestApi.CartApi();
 apiInstance.cartCheckout((error, data, response) => {
   if (error) {
     console.error(error);
@@ -64,7 +61,7 @@ Delete all products from personal cart
 ```javascript
 import {ECommerceAppRestApi} from 'e_commerce_app__rest_api';
 
-let apiInstance = new ECommerceAppRestApi.MyAccountApi();
+let apiInstance = new ECommerceAppRestApi.CartApi();
 apiInstance.cartDeleteAll((error, data, response) => {
   if (error) {
     console.error(error);
@@ -102,7 +99,7 @@ Delete one product form personal cart
 ```javascript
 import {ECommerceAppRestApi} from 'e_commerce_app__rest_api';
 
-let apiInstance = new ECommerceAppRestApi.MyAccountApi();
+let apiInstance = new ECommerceAppRestApi.CartApi();
 let id = "id_example"; // String | The id of the order.
 
 apiInstance.cartDeleteOne(id, (error, data, response) => {
@@ -145,7 +142,7 @@ Access all items inside users cart
 ```javascript
 import {ECommerceAppRestApi} from 'e_commerce_app__rest_api';
 
-let apiInstance = new ECommerceAppRestApi.MyAccountApi();
+let apiInstance = new ECommerceAppRestApi.CartApi();
 apiInstance.cartGetAll((error, data, response) => {
   if (error) {
     console.error(error);
@@ -183,7 +180,7 @@ Access one product inside personal cart
 ```javascript
 import {ECommerceAppRestApi} from 'e_commerce_app__rest_api';
 
-let apiInstance = new ECommerceAppRestApi.MyAccountApi();
+let apiInstance = new ECommerceAppRestApi.CartApi();
 let id = "id_example"; // String | The id of the order.
 
 apiInstance.cartGetOne(id, (error, data, response) => {
@@ -226,7 +223,7 @@ Update product quantity inside personal cart
 ```javascript
 import {ECommerceAppRestApi} from 'e_commerce_app__rest_api';
 
-let apiInstance = new ECommerceAppRestApi.MyAccountApi();
+let apiInstance = new ECommerceAppRestApi.CartApi();
 let id = "id_example"; // String | The id of the order.
 
 apiInstance.cartUpdateOne(id, (error, data, response) => {
@@ -243,120 +240,6 @@ apiInstance.cartUpdateOne(id, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| The id of the order. | 
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="myAccountDelete"></a>
-# **myAccountDelete**
-> myAccountDelete()
-
-Delete personal account
-
-Delete personal account from DB
-
-### Example
-```javascript
-import {ECommerceAppRestApi} from 'e_commerce_app__rest_api';
-
-let apiInstance = new ECommerceAppRestApi.MyAccountApi();
-apiInstance.myAccountDelete((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-<a name="myAccountGet"></a>
-# **myAccountGet**
-> myAccountGet()
-
-Get personal account
-
-Access personal account data from DB
-
-### Example
-```javascript
-import {ECommerceAppRestApi} from 'e_commerce_app__rest_api';
-
-let apiInstance = new ECommerceAppRestApi.MyAccountApi();
-apiInstance.myAccountGet((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="myAccountUpdate"></a>
-# **myAccountUpdate**
-> myAccountUpdate()
-
-Update personal account
-
-Update personal account data in DB
-
-### Example
-```javascript
-import {ECommerceAppRestApi} from 'e_commerce_app__rest_api';
-
-let apiInstance = new ECommerceAppRestApi.MyAccountApi();
-apiInstance.myAccountUpdate((error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-});
-```
-
-### Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 

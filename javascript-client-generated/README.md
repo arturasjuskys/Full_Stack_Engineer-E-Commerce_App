@@ -94,6 +94,18 @@ Class | Method | HTTP request | Description
 *ECommerceAppRestApi.AccountsApi* | [**accountsGetOne**](docs/AccountsApi.md#accountsGetOne) | **GET** /accounts/{id} | Get one account
 *ECommerceAppRestApi.AccountsApi* | [**accountsNew**](docs/AccountsApi.md#accountsNew) | **POST** /accounts/new | Create new account
 *ECommerceAppRestApi.AccountsApi* | [**accountsUpdateOne**](docs/AccountsApi.md#accountsUpdateOne) | **PUT** /accounts/{id} | Update one account
+*ECommerceAppRestApi.CartApi* | [**cartCheckout**](docs/CartApi.md#cartCheckout) | **POST** /my-account/cart/checkout | Process checkout
+*ECommerceAppRestApi.CartApi* | [**cartDeleteAll**](docs/CartApi.md#cartDeleteAll) | **DELETE** /my-account/cart | Delete all
+*ECommerceAppRestApi.CartApi* | [**cartDeleteOne**](docs/CartApi.md#cartDeleteOne) | **DELETE** /my-account/cart/{id} | Delete product from cart
+*ECommerceAppRestApi.CartApi* | [**cartGetAll**](docs/CartApi.md#cartGetAll) | **GET** /my-account/cart | Get cart
+*ECommerceAppRestApi.CartApi* | [**cartGetOne**](docs/CartApi.md#cartGetOne) | **GET** /my-account/cart/{id} | Get one product from cart
+*ECommerceAppRestApi.CartApi* | [**cartUpdateOne**](docs/CartApi.md#cartUpdateOne) | **PUT** /my-account/cart/{id} | Update product in cart
+*ECommerceAppRestApi.MyAccountApi* | [**cartCheckout**](docs/MyAccountApi.md#cartCheckout) | **POST** /my-account/cart/checkout | Process checkout
+*ECommerceAppRestApi.MyAccountApi* | [**cartDeleteAll**](docs/MyAccountApi.md#cartDeleteAll) | **DELETE** /my-account/cart | Delete all
+*ECommerceAppRestApi.MyAccountApi* | [**cartDeleteOne**](docs/MyAccountApi.md#cartDeleteOne) | **DELETE** /my-account/cart/{id} | Delete product from cart
+*ECommerceAppRestApi.MyAccountApi* | [**cartGetAll**](docs/MyAccountApi.md#cartGetAll) | **GET** /my-account/cart | Get cart
+*ECommerceAppRestApi.MyAccountApi* | [**cartGetOne**](docs/MyAccountApi.md#cartGetOne) | **GET** /my-account/cart/{id} | Get one product from cart
+*ECommerceAppRestApi.MyAccountApi* | [**cartUpdateOne**](docs/MyAccountApi.md#cartUpdateOne) | **PUT** /my-account/cart/{id} | Update product in cart
 *ECommerceAppRestApi.MyAccountApi* | [**myAccountDelete**](docs/MyAccountApi.md#myAccountDelete) | **DELETE** /my-account | Delete personal account
 *ECommerceAppRestApi.MyAccountApi* | [**myAccountGet**](docs/MyAccountApi.md#myAccountGet) | **GET** /my-account | Get personal account
 *ECommerceAppRestApi.MyAccountApi* | [**myAccountUpdate**](docs/MyAccountApi.md#myAccountUpdate) | **PUT** /my-account | Update personal account

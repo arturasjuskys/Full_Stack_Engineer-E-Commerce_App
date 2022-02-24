@@ -15,6 +15,7 @@
 import {ApiClient} from './ApiClient';
 import {Order} from './model/Order';
 import {AccountsApi} from './api/AccountsApi';
+import {CartApi} from './api/CartApi';
 import {MyAccountApi} from './api/MyAccountApi';
 import {OrdersApi} from './api/OrdersApi';
 import {ProductsApi} from './api/ProductsApi';
@@ -68,6 +69,12 @@ export {
     * @property {module:api/AccountsApi}
     */
     AccountsApi,
+
+    /**
+    * The CartApi service constructor.
+    * @property {module:api/CartApi}
+    */
+    CartApi,
 
     /**
     * The MyAccountApi service constructor.
