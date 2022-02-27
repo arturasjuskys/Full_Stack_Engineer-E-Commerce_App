@@ -5,12 +5,17 @@
   "main": "index.js",
   "dependencies": {
     "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
     "pg": "^8.7.3",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -r dotenv/config index.js",
+    "create-db": "node -r dotenv/config setupDatabase"
   },
   "repository": {
     "type": "git",
