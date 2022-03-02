@@ -1,6 +1,6 @@
 'use-strict';
 
-const { Pool } = erequire('pg');
+const { Pool } = require('pg');
 const { DB } = require('../config');
 
 // creating PostgreSQL connection

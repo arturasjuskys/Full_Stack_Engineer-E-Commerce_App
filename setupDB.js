@@ -1,6 +1,6 @@
+require('dotenv').config();
 const { Client } = require('pg');
 const { DB } = require('./config');
-console.log(DB);
 
 (async () => {
   const usersTableSQL = `
@@ -82,6 +82,8 @@ console.log(DB);
       password: DB.PG_PASSWORD,
       port: DB.PG_PORT
     });
+    // console.log(db.port);
+    
 
     await db.connect();
 
