@@ -80,6 +80,8 @@ module.exports = class ProductModel {
 
     try {
       const product = await db.query(sql, [id]);
+
+      return product;
     } catch (error) {
       throw error;
     }
