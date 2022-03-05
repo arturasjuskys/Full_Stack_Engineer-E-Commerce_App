@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ProductModel = require('../models/productModel');
 const Product = new ProductModel();
-const factory = require('../controllers/handlerFactory');
+const factory = require('../controllers/productController');
 
 router.route('/')
   .get(factory.getAll(Product))

@@ -1,49 +1,19 @@
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
-exports.deleteOne = Model => {
+exports.getAll = Model => {
   return catchAsync(async (req, res, next) => {
-    const doc = await Model.deleteOne(req.params.id);
-
-    if (!doc.rowCount) {
-      return next(
-        new AppError('No document found with that ID', 404)
-        );
-    };
-    
-    res.status(204).json({
-      status: 'success',
-      data: null
-    });
-  });
-};
-exports.updateOne = Model => {
-  return catchAsync(async (req, res, next) => {
-    const { id } = req.params;
-    const { name, price, description } = req. body;
-    const doc = await Model.updateOne(id, name, price, description);
+    const doc = await Model.getAll();
 
     if (!doc) {
       return next(
-        new AppError('No document found with that ID', 404)
+        new AppError('No documents found in database', 404)
       );
     };
 
     res.status(200).json({
       status: 'success',
-      data: {
-        doc
-      }
-    });
-  });
-};
-exports.createOne = Model => {
-  return catchAsync(async (req, res, next) => {
-    const { name, price, description } = req.body;
-    const doc = await Model.createOne(name, price, description);
-
-    res.status(201).json({
-      status: 'success',
+      results: doc.length,
       data: {
         doc
       }
@@ -68,22 +38,53 @@ exports.getOne = Model => {
     });
   });
 };
-exports.getAll = Model => {
+exports.createOne = Model => {
   return catchAsync(async (req, res, next) => {
-    const doc = await Model.getAll();
+    const { total, status, user_id } = req.body;
+    const created = new Date.now();
+    const doc = await Model.createOne(total, status, user_id, created);
+
+    res.status(201).json({
+      status: 'success',
+      data: {
+        doc
+      }
+    });
+  });
+};
+exports.updateOne = Model => {
+  return catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const { total, status, user_id, modified } = req. body;
+    const doc = await Model.updateOne(id, total, status, user_id, modified);
 
     if (!doc) {
       return next(
-        new AppError('No documents found in database', 404)
+        new AppError('No document found with that ID', 404)
       );
     };
 
     res.status(200).json({
       status: 'success',
-      results: doc.length,
       data: {
         doc
       }
+    });
+  });
+};
+exports.deleteOne = Model => {
+  return catchAsync(async (req, res, next) => {
+    const doc = await Model.deleteOne(req.params.id);
+
+    if (!doc.rowCount) {
+      return next(
+        new AppError('No document found with that ID', 404)
+        );
+    };
+    
+    res.status(204).json({
+      status: 'success',
+      data: null
     });
   });
 };

@@ -1,8 +1,5 @@
 const { Client } = require('pg');
-// Adding 'config.env' values
-const dotenv = require('dotenv').config({ path: '../config.env' });
 const SQL = require('./creatingTablesSQL');
-
 
 (async () => {
   const {
@@ -16,11 +13,11 @@ const SQL = require('./creatingTablesSQL');
   
   try {
     const db = new Client({
-      user: process.env.PG_USER,
-      password: process.env.PG_PASSWORD,
-      database: process.env.PG_DATABASE,
-      host: process.env.PG_HOST,
-      port: process.env.PG_PORT
+      user: 'postgres',
+      password: 'postgres',
+      database: 'ecommerce',
+      host: 'localhost',
+      port: 5432
     });
 
     await db.connect();

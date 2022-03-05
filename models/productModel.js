@@ -3,9 +3,7 @@ const db = require('../db');
 module.exports = class ProductModel {
   // Get all
   async getAll() {
-    const sql = `
-      SELECT * FROM products;
-    `;
+    const sql = `SELECT * FROM products;`;
 
     try {
       const products = await db.query(sql);
@@ -16,7 +14,7 @@ module.exports = class ProductModel {
     }
   }
 
-  // Get  by ID
+  // Get by ID
   async getOne(id) {
     const sql = `
     SELECT * FROM products

@@ -15,7 +15,6 @@ const pool = new Pool({
 });
 
 // Express Server
-app.use(express.json());
 app.listen(PORT, () => {
   console.log(`Express server is listening on PORT: ${PORT}`);
 });
