@@ -1,7 +1,8 @@
 const express = require('express');
-
 const app = express();
-const PORT = 4000;
+// Adding 'config.env' values
+const dotenv = require('dotenv').config({ path: './config.env' });
+const PORT = process.env.PORT || 4001;
 
 // Express Server
 app.listen(PORT, () => {
