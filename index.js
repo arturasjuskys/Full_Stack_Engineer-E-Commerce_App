@@ -1,10 +1,10 @@
-// const { Pool } = require('pg');
+const { Pool } = require('pg');
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv').config();
 const productRouter = require('./routes/productRouter');
 const PORT = process.env.PORT || 4001;
-// app.use(express.json());
+app.use(express.json());
 
 app.use('/products', productRouter);
 
