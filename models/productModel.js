@@ -2,7 +2,7 @@ const db = require('../db');
 
 module.exports = class ProductModel {
   // Get all
-  async getAllProducts() {
+  async getAll() {
     const sql = `
       SELECT * FROM products;
     `;
@@ -17,7 +17,7 @@ module.exports = class ProductModel {
   }
 
   // Get  by ID
-  async getOneProduct(id) {
+  async getOne(id) {
     const sql = `
     SELECT * FROM products
     WHERE id = $1;
@@ -33,7 +33,7 @@ module.exports = class ProductModel {
   }
 
   // Create
-  async createOneProduct(name, price, description) {
+  async createOne(name, price, description) {
     const sql = `
     INSERT INTO products (name, price, description)
     VALUES
@@ -51,7 +51,7 @@ module.exports = class ProductModel {
   }
 
   // Update
-  async updateOneProduct(id, name, price, description) {
+  async updateOne(id, name, price, description) {
     const sql = `
       UPDATE products
       SET
@@ -72,7 +72,7 @@ module.exports = class ProductModel {
   }
 
   // Delete
-  async deleteOneProduct(id) {
+  async deleteOne(id) {
     const sql = `
       DELETE FROM products
       WHERE id = $1;

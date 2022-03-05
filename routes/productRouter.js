@@ -2,60 +2,64 @@ const express = require('express');
 const router = express.Router();
 const ProductModel = require('../models/productModel');
 const Product = new ProductModel();
+const catchAsync = require('../utils/catchAsync');
 
-router.get('/', async (req, res) => {
-  try {
-    const response = await Product.getAllProducts();
+router.route('/')
+  .get(catchAsync(async (req, res) => {
+    const response = await Product.getAll();
 
-    res.json(response);
-  } catch(err) {
-    console.error(err);
-  };
-});
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  
-  try {
-    const response = await Product.getOneProduct(id);
+    res.status(200).json({
+      status: 'success',
+      results: response.length,
+      data: {
+        response
+      }
+    });
+  }))
+  .post(catchAsync(async (req, res) => {
+    const { name, price, description } = req.body;
+    const response = await Product.createOne(name, price, description)
 
-    res.json(response);
-  } catch (error) {
-    console.log(error);
-  }
-});
-router.post('/', async (req, res) => {
-  const { name, price, description } = req.body;
+    res.status(201).json({
+      status: 'success',
+      data: {
+        response
+      }
+    });
+  }))
 
-  try {
-    const response = await Product.createOneProduct(name, price, description);
+router.route('/:id')
+  .get(catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const response = await Product.getOne(id);
 
-    res.json(response);
-  } catch (error) {
-    console.log(error);
-  }
-});
-router.put('/:id', async (req, res) => {
-  const { id } = req.params;
-  const { description, price, name } = req.body;
+    res.status(200).json({
+      status: 'success',
+      data: {
+        response
+      }
+    });
+  }))
+  .put(catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const { description, price, name } = req.body;
+    const response = await Product.updateOne(id, name, price, description);
 
-  try {
-    const response = await Product.updateOneProduct(id, name, price, description);
+    res.status(200).json({
+      status: 'success',
+      data: {
+        response
+      }
+    });
+  }))
+  .delete(catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const response = await Product.deleteOne(id);
 
-    res.json('Product updated successfully')
-  } catch (error) {
-    console.log(error);
-  }
-});
-router.delete('/:id', async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const response = await Product.deleteOneProduct(id);
-
-    res.json('Product deleted successfully');
-  } catch (error) {
-    console.log(error);
-  };
-});
+    res.status(204).json({
+      status: 'success',
+      data: null
+    });
+  }))
 
 module.exports = router;
