@@ -23,8 +23,8 @@ module.exports.createOrdersTable = `
     total           INT             NOT NULL,
     status          VARCHAR(50)     NOT NULL,
     user_id         INT             NOT NULL,
-    created         DATE            NOT NULL,
-    modified        DATE            NOT NULL,
+    created         DATE            NOT NULL DEFAULT CURRENT_DATE,
+    modified        DATE,
     FOREIGN KEY (user_id) REFERENCES users(id)
   );
 `;

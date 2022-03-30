@@ -56,14 +56,15 @@ module.exports = class ProductModel {
         name = $1,
         price = $2,
         description = $3
-      WHERE id = $4;
+      WHERE id = $4
+      RETURNING *;
     `;
     const values = [name, price, description, id];
 
     try {
       const product = await db.query(sql, values);
 
-      return 'Product updated successfully';
+      return product.rows;
     } catch (error) {
       throw error;
     }
@@ -73,7 +74,8 @@ module.exports = class ProductModel {
   async deleteOne(id) {
     const sql = `
       DELETE FROM products
-      WHERE id = $1;
+      WHERE id = $1
+      RETURNING *;
     `;
 
     try {

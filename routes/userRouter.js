@@ -6,6 +6,7 @@ const userController = require('../controllers/userController');
 const { Router } = require('express');
 
 router.route('/')
+  .get(userController.getAll(User))
   .post(userController.createOne(User))
 
 router.route('/:id')
@@ -14,5 +15,6 @@ router.route('/:id')
   
   router.route('/email/:email')
   .get(userController.getOneByEmail(User))
+  .delete(userController.deleteOneByEmail(User))
 
 module.exports = router;

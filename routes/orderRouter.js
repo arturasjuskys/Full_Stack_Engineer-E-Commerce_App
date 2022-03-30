@@ -7,9 +7,9 @@ const factory = require('../controllers/productController');
 
 router.route('/')
   .get(factory.getAll(Order))
+  
+  router.route('/:id')
   .post(factory.createOne(Order))
-
-router.route('/:id')
   .get(factory.getOne(Order))
   .put(factory.updateOne(Order))
   .delete(factory.deleteOne(Order))

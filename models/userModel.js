@@ -73,4 +73,36 @@ module.exports = class UserModel {
       throw error;
     };
   }
+
+  // Get all
+  async getAll() {
+    const sql = `
+      SELECT * FROM users;
+    `;
+
+    try {
+      const users = await db.query(sql);
+
+      return users.rows;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Delete by email
+  async deleteOneByEmail(email) {
+    const sql = `
+      DELETE FROM users
+      WHERE email = $1
+      RETURNING *;
+    `;
+
+    try {
+      const user = await db.query(sql, [email]);
+
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
 };

@@ -1,5 +1,6 @@
 const { Client } = require('pg');
-const SQL = require('./creatingTablesSQL');
+const tablesSQL = require('./creatingTablesSQL');
+const dataSQL = require('./insertingDataSQL');
 
 (async () => {
   const {
@@ -9,7 +10,12 @@ const SQL = require('./creatingTablesSQL');
     createOrderItemsTableS,
     createCartsTable,
     createCartItemsTable
-  } = SQL;
+  } = tablesSQL;
+  const {
+    insertUsers,
+    insertProducts,
+    insertOrders
+  } = dataSQL;
   
   try {
     const db = new Client({
@@ -22,13 +28,18 @@ const SQL = require('./creatingTablesSQL');
 
     await db.connect();
 
-    // Running SQL
-    await db.query(createUsersTable);
-    await db.query(createProductsTable);
-    await db.query(createOrdersTable);
-    await db.query(createOrderItemsTableS);
-    await db.query(createCartsTable);
-    await db.query(createCartItemsTable);
+    // Running Tables SQL
+    // await db.query(createUsersTable);
+    // await db.query(createProductsTable);
+    // await db.query(createOrdersTable);
+    // await db.query(createOrderItemsTableS);
+    // await db.query(createCartsTable);
+    // await db.query(createCartItemsTable);
+
+    // Running Data Inserts
+    // await db.query(insertUsers);
+    // await db.query(insertProducts);
+    await db.query(insertOrders);
 
     await db.end();
 

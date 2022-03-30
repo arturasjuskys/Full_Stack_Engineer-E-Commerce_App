@@ -31,18 +31,17 @@ module.exports = class OrderModel {
   }
 
   // Create
-  async createOne(total, status, user_id, created) {
+  async createOne(total, status, id, created) {
     const sql = `
       INSERT INTO orders (total, status, user_id, created)
-      VALUES
-        ($1, $2, $3, $4, $5)
+      VALUES ($1, $2, $3, $4)
       RETURNING *;
     `;
 
     try {
-      const order = await db.query(sql, [total, status, user_id, created]);
+      const order = await db.query(sql, [total, status, id, created]);
 
-      return order.rows[0];
+      return order.rows;
     } catch (error) {
       throw error;
     }
@@ -63,7 +62,7 @@ module.exports = class OrderModel {
     try {
       const order = await db.query(sql, [total, status, user_id, modified, id]);
 
-      return 'Order updated successfully';
+      return order;
     } catch (error) {
       throw error;
     }

@@ -40,9 +40,11 @@ exports.getOne = Model => {
 };
 exports.createOne = Model => {
   return catchAsync(async (req, res, next) => {
-    const { total, status, user_id } = req.body;
+    const { total, status } = req.body;
+    const { id } = req.params;
     const created = new Date.now();
-    const doc = await Model.createOne(total, status, user_id, created);
+    const doc = await Model.createOne(total, status, id, created);
+    console.log(id);
 
     res.status(201).json({
       status: 'success',
