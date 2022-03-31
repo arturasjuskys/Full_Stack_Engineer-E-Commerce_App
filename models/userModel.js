@@ -3,15 +3,21 @@ const db = require('../db');
 module.exports = class UserModel {
   // Create
   async createOne(email, password, first_name, last_name, google, facebook) {
-    const sql = `
+    const createUser = `
       INSERT INTO users (email, password, first_name, last_name, google, facebook)
-      VALUES
-        ($1, $2, $3, $4, $5, $6)
+      VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING *;
+    `;
+    const createCart = `
+      INSERT INTO carts (user_id)
+      VALUES ($1);
     `;
 
     try {
-      const user = await db.query(sql, [email, password, first_name, last_name, google, facebook]);
+      const user = await db.query(createUser, [email, password, first_name, last_name, google, facebook]);
+      const userId = user.rows[0].id;
+      const cart = await db.query(createCart, [userId])
+      console.log(userId);
 
       return user.rows[0];
     } catch (error) {

@@ -1,6 +1,45 @@
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
+// Get all
+exports.getAll = Model => {
+  return catchAsync(async (req, res, next) => {
+    const doc = await Model.getAll();
+
+    if (!doc) {
+      return next(
+        new AppError('No documents found', 404)
+      );
+    };
+
+    res.status(200).json({
+      status: 'success',
+      results: doc.length,
+      data: {
+        doc
+      }
+    });
+  });
+};
+exports.getOneById = Model => {
+  return catchAsync(async (req, res, next) => {
+    const doc = await Model.getOneById(req.params.user_id);
+
+    if(!doc) {
+      return next(
+        new AppError('No document found', 404)
+      );
+    };
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        doc
+      }
+    });
+  });
+};
+
 // Create
   // Instantiate new cart and save
 

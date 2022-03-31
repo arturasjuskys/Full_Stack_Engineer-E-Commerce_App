@@ -29,16 +29,16 @@ const dataSQL = require('./insertingDataSQL');
     await db.connect();
 
     // Running Tables SQL
-    // await db.query(createUsersTable);
-    // await db.query(createProductsTable);
-    // await db.query(createOrdersTable);
-    // await db.query(createOrderItemsTableS);
-    // await db.query(createCartsTable);
-    // await db.query(createCartItemsTable);
+    await db.query(createUsersTable);
+    await db.query(createProductsTable);
+    await db.query(createOrdersTable);
+    await db.query(createOrderItemsTableS);
+    await db.query(createCartsTable);
+    await db.query(createCartItemsTable);
 
     // Running Data Inserts
-    // await db.query(insertUsers);
-    // await db.query(insertProducts);
+    await db.query(insertUsers);
+    await db.query(insertProducts);
     await db.query(insertOrders);
 
     await db.end();
