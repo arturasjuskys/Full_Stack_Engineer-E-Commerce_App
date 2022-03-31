@@ -14,6 +14,7 @@ const dataSQL = require('./insertingDataSQL');
   const {
     insertUsers,
     insertProducts,
+    insertCarts,
     insertOrders
   } = dataSQL;
   
@@ -37,9 +38,10 @@ const dataSQL = require('./insertingDataSQL');
     await db.query(createCartItemsTable);
 
     // Running Data Inserts
-    await db.query(insertUsers);
-    await db.query(insertProducts);
-    await db.query(insertOrders);
+    // await db.query(insertUsers);
+    // await db.query(insertProducts);
+    // await db.query(insertCarts);
+    // await db.query(insertOrders);
 
     await db.end();
 

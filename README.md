@@ -46,3 +46,6 @@ Check out these helpful resources:
 
 ### Example Code
 What to see an example of how someone else has completed this project? Click this [link](https://static-assets.codecademy.com/Paths/full-stack-career-path/portfolio-projects/e-commerce-rest-api/codecademy-ecommerce-rest-api-master.zip) to download a zip file containing one example solution to this project. Remember: your project doesn’t have to look anything like this! It should be unique to your vision.
+
+## Resources
+* [mockaroo: dummy data](https://www.mockaroo.com/)
