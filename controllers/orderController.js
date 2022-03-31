@@ -20,6 +20,25 @@ exports.getAll = Model => {
     });
   });
 };
+exports.getAllByUser = Model => {
+  return catchAsync(async (req, res, next) => {
+    const doc = await Model.getAllByUser(req.params.user_id);
+
+    if (!doc) {
+      return next(
+        new AppError('No documents found', 404)
+      );
+    };
+
+    res.status(200).json({
+      status: 'success',
+      results: doc.length,
+      data: {
+        doc
+      }
+    });
+  });
+};
 exports.getOne = Model => {
   return catchAsync(async (req, res, next) => {
     const doc = await Model.getOne(req.params.id);

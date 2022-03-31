@@ -1,3 +1,4 @@
+const { RowDescriptionMessage } = require('pg-protocol/dist/messages');
 const db = require('../db');
 
 module.exports = class OrderModel {
@@ -12,6 +13,32 @@ module.exports = class OrderModel {
     } catch (error) {
       throw error;
     };
+  }
+
+  // Get all by User
+  async getAllByUser(user_id) {
+    const sql = `
+      SELECT
+        users.id AS user_id,
+        users.first_name,
+        users.last_name,
+        orders.id AS order_id,
+        orders.created,
+        orders.total,
+        orders.status,
+        orders.modified
+      FROM orders JOIN users
+        ON users.id = orders.user_id
+      WHERE user_id = $1
+    `;
+
+    try {
+      const orders = await db.query(sql, [user_id]);
+
+      return orders.rows;
+    } catch (error) {
+      throw error;
+    }
   }
 
   // Get by ID

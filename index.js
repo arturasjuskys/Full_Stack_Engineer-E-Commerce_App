@@ -8,8 +8,9 @@ app.use(express.json());
 
 // Routes
 app.use('/products', productRouter);
-app.use('/orders', orderRouter);
+app.use('/account', orderRouter);
 app.use('/users', userRouter);
+app.use('/orders', orderRouter);
 
 // Server
 module.exports = app;
