@@ -38,14 +38,18 @@ module.exports = class CartModel {
   // get by ID
   async getOneById(user_id) {
     const sql = `
-      SELECT * FROM carts
+      SELECT * FROM users
+      JOIN carts
+        ON users.id = carts.user_id
+      JOIN cart_items
+        ON carts.id = cart_items.cart_id
       WHERE user_id = $1;
     `;
 
     try {
       const cart = await db.query(sql, [user_id]);
 
-      return cart.rows[0];
+      return cart.rows;
     } catch (error) {
       throw error;
     };
