@@ -42,8 +42,9 @@ exports.createOne = Model => {
   return catchAsync(async (req, res, next) => {
     const { total, status } = req.body;
     const { id } = req.params;
-    const created = new Date.now();
-    const doc = await Model.createOne(total, status, id, created);
+    const now = new Date();
+    const created = `${now.getFullYear()}${now.getMonth()}${now.getDay()}`;
+    const doc = await Model.createOne(total, status, created, id);
     console.log(id);
 
     res.status(201).json({
@@ -54,11 +55,14 @@ exports.createOne = Model => {
     });
   });
 };
-exports.updateOne = Model => {
+exports.updateOrderStatus = Model => {
   return catchAsync(async (req, res, next) => {
     const { id } = req.params;
-    const { total, status, user_id, modified } = req. body;
-    const doc = await Model.updateOne(id, total, status, user_id, modified);
+    const { status } = req. body;
+    const now = new Date();
+    const modified = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+    const currentOrder = await Model.getOne(id);
+    const doc = await Model.updateOrderStatus(currentOrder.total, status, currentOrder.user_id, currentOrder.created, modified, id);
 
     if (!doc) {
       return next(

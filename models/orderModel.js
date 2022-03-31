@@ -48,21 +48,23 @@ module.exports = class OrderModel {
   }
 
   // Update
-  async updateOne(total, status, user_id, modified, id) {
+  async updateOrderStatus(total, status, user_id, created, modified, id) {
     const sql = `
       UPDATE orders
       SET
         total = $1,
         status = $2,
         user_id = $3,
-        modified = $4
-      WHERE id = $5;
+        created = $4,
+        modified = DATE ($5)
+      WHERE id = $6
+      RETURNING *;
     `;
 
     try {
-      const order = await db.query(sql, [total, status, user_id, modified, id]);
+      const order = await db.query(sql, [total, status, user_id, created, modified, id]);
 
-      return order;
+      return order.rows;
     } catch (error) {
       throw error;
     }
