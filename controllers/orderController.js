@@ -59,12 +59,9 @@ exports.getOne = Model => {
 };
 exports.createOne = Model => {
   return catchAsync(async (req, res, next) => {
-    const { total, status } = req.body;
-    const { id } = req.params;
-    const now = new Date();
-    const created = `${now.getFullYear()}${now.getMonth()}${now.getDay()}`;
-    const doc = await Model.createOne(total, status, created, id);
-    console.log(id);
+    const { total } = req.body;
+    const { user_id } = req.params;
+    const doc = await Model.createOne(total, user_id);
 
     res.status(201).json({
       status: 'success',

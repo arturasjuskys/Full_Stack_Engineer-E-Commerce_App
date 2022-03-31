@@ -21,7 +21,7 @@ module.exports.createOrdersTable = `
   CREATE TABLE IF NOT EXISTS orders (
     id              INT             PRIMARY KEY GENERATED ALWAYS AS IDENTITY NOT NULL,
     total           INT             NOT NULL,
-    status          VARCHAR(50)     NOT NULL,
+    status          VARCHAR(50)     DEFAULT 'pending',
     user_id         INT             NOT NULL,
     created         DATE            NOT NULL DEFAULT CURRENT_DATE,
     modified        DATE,
