@@ -22,27 +22,22 @@ module.exports = class CartModel {
     }
   }
 
-  // Get All
-  async getAll() {
-    const sql = `SELECT * FROM carts;`;
-
-    try {
-      const carts = await db.query(sql);
-
-      return carts.rows;
-    } catch (error) {
-      throw error;
-    }
-  }
-
   // get by ID
   async getOneById(user_id) {
     const sql = `
-      SELECT * FROM users
+      SELECT
+        carts.id AS cart_id,
+        products.id AS product_id,
+        products.name AS product_name,
+        products.price
+      FROM
+        users
       JOIN carts
         ON users.id = carts.user_id
       JOIN cart_items
         ON carts.id = cart_items.cart_id
+      JOIN products
+        ON cart_items.product_id = products.id
       WHERE user_id = $1;
     `;
 

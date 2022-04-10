@@ -10,9 +10,12 @@ app.use(express.json());
 
 // Routes
 app.use('/products', productRouter);
-app.use('/account', orderRouter);
-app.use('/account', cartRouter);
-app.use('/account', cartItemRouter);
+app.use(
+  '/account',
+  orderRouter, cartRouter, cartItemRouter);
+// app.use('/account', orderRouter);
+// app.use('/account', cartRouter);
+// app.use('/account', cartItemRouter);
 app.use('/users', userRouter);
 app.use('/orders', orderRouter);
 app.use('/carts', cartRouter)
