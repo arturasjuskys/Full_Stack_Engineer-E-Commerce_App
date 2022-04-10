@@ -32,11 +32,8 @@ module.exports.createOrderItemsTableS = `
   CREATE TABLE IF NOT EXISTS order_items (
     id              INT             PRIMARY KEY GENERATED ALWAYS AS IDENTITY NOT NULL,
     order_id        INT             NOT NULL,
-    qty             INT             NOT NULL,
-    price           DECIMAL         NOT NULL,
     product_id      INT             NOT NULL,
-    name            VARCHAR(50)     NOT NULL,
-    description     VARCHAR(200)    NOT NULL,
+    qty             INT             NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(id)
   );
 `;

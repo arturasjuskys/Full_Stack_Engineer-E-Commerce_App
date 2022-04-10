@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const CartModel = require('../models/cartModel');
 const Cart = new CartModel();
-const factory = require('../controllers/cartController');
+const cartItemModel = require('../models/cartItemModel');
+const CartItem = new cartItemModel();
+const cartController = require('../controllers/cartController');
 
-router.route('/carts')
-  .get(factory.getAll(Cart))
-
-router.route('/:user_id/cart')
-  .get(factory.getOneById(Cart))
+router.route('/cart')
+  .get(cartController.getOneById(Cart))
+  .post(cartController.addItemToCart(CartItem))
 
 module.exports = router;

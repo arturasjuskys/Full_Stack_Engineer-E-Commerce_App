@@ -1,29 +1,11 @@
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
-// Get all
-exports.getAll = Model => {
-  return catchAsync(async (req, res, next) => {
-    const doc = await Model.getAll();
-
-    if (!doc) {
-      return next(
-        new AppError('No documents found', 404)
-      );
-    };
-
-    res.status(200).json({
-      status: 'success',
-      results: doc.length,
-      data: {
-        doc
-      }
-    });
-  });
-};
+// Load
+  // Load user cart based on ID
 exports.getOneById = Model => {
   return catchAsync(async (req, res, next) => {
-    const doc = await Model.getOneById(req.params.user_id);
+    const doc = await Model.getOneById(req.body.user_id);
 
     if(!doc) {
       return next(
@@ -42,15 +24,30 @@ exports.getOneById = Model => {
 };
 
 // Create
-  // Instantiate new cart and save
-
-// Load
-  // Load user cart based on ID
-  // Load cart items and add them to the cart record
+  // Created with new user
 
 // Add item
   // Load user cart based on ID
   // Create cart item
+exports.addItemToCart = Model => {
+  return catchAsync(async (req, res, next) => {
+    const { cart_id, product_id, qty } = req.body;
+    const doc = await Model.createOne(cart_id, product_id, qty);
+
+    if (!doc) {
+      return next(
+        new AppError('No document found', 404)
+      );
+    };
+
+    res.status(201).json({
+      status: 'success',
+      data: {
+        doc
+      }
+    });
+  });
+};
 
 // Remove item
   // Remove cart item by line ID
