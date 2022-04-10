@@ -9,5 +9,6 @@ const cartController = require('../controllers/cartController');
 router.route('/cart')
   .get(cartController.getOneById(Cart))
   .post(cartController.addItemToCart(CartItem))
+  .delete(cartController.removeItemFromCart(CartItem))
 
 module.exports = router;

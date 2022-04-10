@@ -51,6 +51,22 @@ exports.addItemToCart = Model => {
 
 // Remove item
   // Remove cart item by line ID
+exports.removeItemFromCart = Model => {
+  return catchAsync(async (req, res, next) => {
+    const doc = await Model.deleteOne(req.body.id);
+
+    if (!doc) {
+      return next(
+        new AppError('No document found', 404)
+      );
+    };
+
+    res.status(204).json({
+      status: 'success',
+      data: null
+    });
+  });
+};
 
 // Update item
   // Remove cart item by line ID
